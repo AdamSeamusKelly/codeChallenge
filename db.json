@@ -2,9 +2,9 @@
   "task": [
     {
       "status": "Todo",
-      "name": "Create database",
-      "description": "Create database",
-      "assigned": "John Smith"
+      "name": "Add user",
+      "description": "Add user",
+      "assigned": "John Doe"
     },
     {
       "status": "In progress",
@@ -14,21 +14,21 @@
     },
     {
       "status": "In progress",
-      "name": "Create database",
+      "name": "Build JSON",
       "description": "Create database",
+      "assigned": "John Doe"
+    },
+    {
+      "status": "Done",
+      "name": "Onboarding",
+      "description": "Onboarding",
       "assigned": "John Smith"
     },
     {
       "status": "Done",
       "name": "Create database",
       "description": "Create database",
-      "assigned": "John Smith"
-    },
-    {
-      "status": "Done",
-      "name": "Create database",
-      "description": "Create database",
-      "assigned": "John Smith"
+      "assigned": "John Doe"
     }
   ]
 }

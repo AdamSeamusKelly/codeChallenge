@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "knockout": "^3.5.1"
   }
 }

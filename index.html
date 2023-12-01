@@ -1,30 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Flax & Teal Trello Kanban</title>
+  <head>
+    <title>Trello Kanban Board</title>
 
-<link rel="stylesheet" href="style.css"/>
-<script src="knockout.js" defer></script>
-<script src="jquery.js" defer></script>
-<script src="application.js" defer></script>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      type="text/javascript"
+      src="/bower_components/knockout/build/knockout-raw.js"
+    ></script>
+    <script src="jquery.js" defer></script>
+    <script src="application.js" defer></script>
+    <script src="viewModel.js" defer></script>
+  </head>
+
+  <body>
     <div class="board">
-        <div class="lanes">
-            <div class="swim-lane" id="todoLane">
-                <h1 class="heading">TODO</h1>
-    
+      <div class="lanes">
+        <div
+          class="swim-lane"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+          id="todoLane"
+        >
+          <h3 class="heading">TODO</h3>
+          <div data-bind="foreach: todos">
+            <div
+              id="task"
+              class="taskCard"
+              draggable="true"
+              ondragstart="drag(event)"
+            >
+              <span data-bind="text: status"></span>
+              <span data-bind="text: name"></span>
+              <span data-bind="text: description"></span>
+              <span data-bind="text: assigned"></span>
             </div>
-            <div class="swim-lane" id="inProgressLane">
-                <h1 class="heading">In Progress</h1>
-                
-            </div>
-            <div class="swim-lane" id="doneLane">
-                <h1 class="heading">Done</h1>
-                
-            </div>
+          </div>
         </div>
+        <div
+          class="swim-lane"
+          id="inProgressLane"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          <h3 class="heading">In Progress</h3>
+          <div data-bind="foreach: inprogress">
+            <div
+              id="task"
+              class="taskCard"
+              draggable="true"
+              ondragstart="drag(event)"
+            >
+              <span data-bind="text: status"></span>
+              <span data-bind="text: name"></span>
+              <span data-bind="text: description"></span>
+              <span data-bind="text: assigned"></span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="swim-lane"
+          id="doneLane"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          <h3 class="heading">Done</h3>
+          <div data-bind="foreach: done">
+            <div
+              id="task"
+              class="taskCard"
+              draggable="true"
+              ondragstart="drag(event)"
+            >
+              <span data-bind="text: status"></span>
+              <span data-bind="text: name"></span>
+              <span data-bind="text: description"></span>
+              <span data-bind="text: assigned"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>
+
+<script>
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }
+</script>
