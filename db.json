@@ -1,34 +1,39 @@
 {
   "task": [
     {
-      "status": "Todo",
-      "name": "Add user",
-      "description": "Add user",
-      "assigned": "John Doe"
+      "status": "TODO",
+      "name": "Something different",
+      "description": "Dev work",
+      "assigned": "Jane Doe",
+      "id": 1
     },
     {
-      "status": "In progress",
-      "name": "Create database",
-      "description": "Create database",
-      "assigned": "John Smith"
+      "status": "IN_PROGRESS",
+      "name": "Another task",
+      "description": "QA work",
+      "assigned": "John Doe",
+      "id": 2
     },
     {
-      "status": "In progress",
-      "name": "Build JSON",
-      "description": "Create database",
-      "assigned": "John Doe"
+      "status": "DONE",
+      "name": "ONBOARDING",
+      "description": "Dev work",
+      "assigned": "Jane Doe",
+      "id": 3
     },
     {
-      "status": "Done",
-      "name": "Onboarding",
-      "description": "Onboarding",
-      "assigned": "John Smith"
+      "status": "TODO",
+      "name": "Create Regression Tests",
+      "description": "QA work",
+      "assigned": "John Doe",
+      "id": 4
     },
     {
-      "status": "Done",
-      "name": "Create database",
-      "description": "Create database",
-      "assigned": "John Doe"
+      "status": "DONE",
+      "name": "Demo",
+      "description": "DEV and QA work",
+      "assigned": "John/ Jane Doe",
+      "id": 5
     }
   ]
 }

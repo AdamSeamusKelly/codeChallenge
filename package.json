@@ -1,6 +1,12 @@
 {
   "dependencies": {
+    "jquery": "^3.7.1",
     "json-server": "^0.17.4",
-    "knockout": "^3.5.1"
+    "knockout": "^3.5.1",
+    "knockout-store": "^4.0.0",
+    "react-router-dom": "^6.20.1"
+  },
+  "scripts": {
+    "server": "json-server -p 3000 --watch db.json"
   }
 }

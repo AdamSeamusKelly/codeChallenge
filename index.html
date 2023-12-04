@@ -8,9 +8,11 @@
       type="text/javascript"
       src="/bower_components/knockout/build/knockout-raw.js"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="jquery.js" defer></script>
     <script src="application.js" defer></script>
     <script src="viewModel.js" defer></script>
+    <script src="node_modules/knockout-store/dist/knockout-store.js"></script>
   </head>
 
   <body>
@@ -18,14 +20,13 @@
       <div class="lanes">
         <div
           class="swim-lane"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-          id="todoLane"
+          data-bind="event: { drop: function (data, e) { return updateTask(data, e, 'TODO') }, dragover: function (data, e) { return allowDrop(e) } }"
+          id="TODO"
         >
           <h3 class="heading">TODO</h3>
           <div data-bind="foreach: todos">
             <div
-              id="task"
+              data-bind="attr : { id: id }"
               class="taskCard"
               draggable="true"
               ondragstart="drag(event)"
@@ -39,14 +40,13 @@
         </div>
         <div
           class="swim-lane"
-          id="inProgressLane"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
+          id="IN_PROGRESS"
+          data-bind="event: { drop: function (data, e) { return updateTask(data, e, 'IN_PROGRESS') }, dragover: function (data, e) { return allowDrop(e) } }"
         >
           <h3 class="heading">In Progress</h3>
           <div data-bind="foreach: inprogress">
             <div
-              id="task"
+              data-bind="attr: { id: id }"
               class="taskCard"
               draggable="true"
               ondragstart="drag(event)"
@@ -60,14 +60,13 @@
         </div>
         <div
           class="swim-lane"
-          id="doneLane"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
+          id="DONE"
+          data-bind="event: { drop: function (data, e) { return updateTask(data, e, 'DONE') }, dragover: function (data, e) { return allowDrop(e) } }"
         >
           <h3 class="heading">Done</h3>
           <div data-bind="foreach: done">
             <div
-              id="task"
+              data-bind="attr: { id: id }"
               class="taskCard"
               draggable="true"
               ondragstart="drag(event)"
@@ -82,20 +81,9 @@
       </div>
     </div>
   </body>
+  <script>
+    drag = function (event) {
+      event.dataTransfer.setData("text", event.target.id);
+    };
+  </script>
 </html>
-
-<script>
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-
-  function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-  }
-
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-  }
-</script>
